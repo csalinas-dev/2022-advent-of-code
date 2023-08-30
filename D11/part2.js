@@ -60,21 +60,26 @@ function calculateMonkeyBusiness(monkeys) {
     for (var monkey of monkeys) {
       monkey.items.forEach((item) => {
         const worryLvl = monkey.operation(item);
-        const boredLvl = parseInt(worryLvl / 3);
+        const reliefLvl = parseInt(worryLvl);
         const { factor, monkeyTrue, monkeyFalse } = monkey.test;
-        const divise = boredLvl % factor;
+        const divise = reliefLvl % factor;
         const throwTo = !divise ? monkeyTrue : monkeyFalse;
-        monkeys[throwTo].items.push(boredLvl);
+        monkeys[throwTo].items.push(reliefLvl);
         monkeys[monkey.id].count += 1;
       });
       monkey.items = [];
     }
   }
 
-  var sorted = monkeys.sort(({ count: a }, { count: b }) => b - a);
-  var first = sorted.shift().count;
-  var second = sorted.shift().count;
-  console.log(first * second);
+  console.log(`Monkey 0 inspected items ${monkeys[0].count} times.`);
+  console.log(`Monkey 1 inspected items ${monkeys[1].count} times.`);
+  console.log(`Monkey 2 inspected items ${monkeys[2].count} times.`);
+  console.log(`Monkey 3 inspected items ${monkeys[3].count} times.`);
+
+  // var sorted = monkeys.sort(({ count: a }, { count: b }) => b - a);
+  // var first = sorted.shift().count;
+  // var second = sorted.shift().count;
+  // console.log(first * second);
 }
 
 read().then(calculateMonkeyBusiness);

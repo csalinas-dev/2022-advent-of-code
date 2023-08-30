@@ -60,11 +60,11 @@ function calculateMonkeyBusiness(monkeys) {
     for (var monkey of monkeys) {
       monkey.items.forEach((item) => {
         const worryLvl = monkey.operation(item);
-        const boredLvl = parseInt(worryLvl / 3);
+        const reliefLvl = parseInt(worryLvl / 3);
         const { factor, monkeyTrue, monkeyFalse } = monkey.test;
-        const divise = boredLvl % factor;
+        const divise = reliefLvl % factor;
         const throwTo = !divise ? monkeyTrue : monkeyFalse;
-        monkeys[throwTo].items.push(boredLvl);
+        monkeys[throwTo].items.push(reliefLvl);
         monkeys[monkey.id].count += 1;
       });
       monkey.items = [];
