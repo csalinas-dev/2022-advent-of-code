@@ -8,7 +8,7 @@ if (process.argv.length != 4) {
 }
 
 const file = process.argv[2];
-const rounds = process.argv[3];
+const rounds = parseInt(process.argv[3]);
 
 async function read() {
   const fileStream = fs.createReadStream(`${__dirname}/${file}`);
@@ -67,7 +67,7 @@ function calculateMonkeyBusiness(monkeys) {
         monkeys[throwTo].items.push(boredLvl);
         monkeys[monkey.id].count += 1;
       });
-      monkey.items.splice(0, monkey.items.length);
+      monkey.items = [];
     }
   }
 
