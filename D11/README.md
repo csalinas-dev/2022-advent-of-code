@@ -8,7 +8,7 @@
 
 ### Part 2
 
-
+![AOC-2022-11-B](https://github.com/csalinas-dev/2022-advent-of-code/assets/10602830/f84f7dae-96e6-401e-bdf3-3c6daad76a89)
 
 ### Testing Kyle's Input
 
