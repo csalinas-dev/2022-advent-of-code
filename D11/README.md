@@ -13,4 +13,5 @@
 ### Testing Kyle's Input
 
 Running Kyle's input file for 20 rounds on part 1, my program yields `120756`.
+
 Running Kyle's input file for 10000 rounds on part 2, my program yields `39109444654`.
