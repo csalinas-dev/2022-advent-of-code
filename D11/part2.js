@@ -56,11 +56,12 @@ async function read() {
 }
 
 function calculateMonkeyBusiness(monkeys) {
+  const cycle = _.reduce(monkeys, (product, m) => product * m.test.factor, 1);
   for (var round = 0; round < rounds; round++) {
     for (var monkey of monkeys) {
       monkey.items.forEach((item) => {
         const worryLvl = monkey.operation(item);
-        const reliefLvl = parseInt(worryLvl);
+        const reliefLvl = worryLvl % cycle;
         const { factor, monkeyTrue, monkeyFalse } = monkey.test;
         const divise = reliefLvl % factor;
         const throwTo = !divise ? monkeyTrue : monkeyFalse;
@@ -71,15 +72,10 @@ function calculateMonkeyBusiness(monkeys) {
     }
   }
 
-  console.log(`Monkey 0 inspected items ${monkeys[0].count} times.`);
-  console.log(`Monkey 1 inspected items ${monkeys[1].count} times.`);
-  console.log(`Monkey 2 inspected items ${monkeys[2].count} times.`);
-  console.log(`Monkey 3 inspected items ${monkeys[3].count} times.`);
-
-  // var sorted = monkeys.sort(({ count: a }, { count: b }) => b - a);
-  // var first = sorted.shift().count;
-  // var second = sorted.shift().count;
-  // console.log(first * second);
+  var sorted = monkeys.sort(({ count: a }, { count: b }) => b - a);
+  var first = sorted.shift().count;
+  var second = sorted.shift().count;
+  console.log(first * second);
 }
 
 read().then(calculateMonkeyBusiness);
